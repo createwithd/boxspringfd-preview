@@ -334,7 +334,7 @@ footer p{max-width:80ch}
 <section class="sec" id="werkt"><div class="wrap">
   <div class="head"><h2>Een bed dat u overeind helpt</h2><p>De Fermo gaat verder dan omhoog en omlaag. Dit is de echte Fermo in beweging.</p></div>
   <div class="split">
-    <div class="media"><video class="echt" data-src="../salespagina/vid/echt.mp4" poster="../salespagina/img/echt-staop.jpg" muted loop playsinline aria-label="De echte Fermo gaat omhoog, kantelt en vormt een zitstand"></video></div>
+    <div class="media"><video data-src="../salespagina/vid/staop.mp4" poster="../salespagina/img/staop.jpg" muted loop playsinline aria-label="Het bed gaat van vlak naar de sta-op-stand"></video></div>
     <div class="copy">
       <h3>Drie bewegingen, één afstandsbediening</h3>
       <p>Van liggen naar zitten, zonder te hoeven trekken of duwen.</p>
@@ -555,12 +555,12 @@ const total = () => lines().reduce((a, x) => a + x[1], 0);
 /* galerij */
 function slides(){ return [
   {img:`../salespagina/img/kleur-${S.k}.jpg`,cap:['Het lijkt een gewone boxspring','Maar hij helpt u overeind']},
+  {vid:'../salespagina/vid/staop.mp4',poster:'../salespagina/img/staop.jpg',cap:['Sta-op-stand','Van liggen naar zitten']},
+  {vid:'../salespagina/vid/verstel.mp4',poster:'../salespagina/img/verstel.jpg',cap:['Rug en benen apart','Met één afstandsbediening']},
   {vid:'../salespagina/vid/echt.mp4',poster:'../salespagina/img/echt-staop.jpg',echt:1,cap:['Omhoog, kantelen, rechtop','De echte Fermo in beweging']},
-  {img:'../salespagina/img/staop.jpg',alt:'De Fermo in sta-op-stand',cap:['Sta-op-stand','Van liggen naar zitten']},
   {img:'../salespagina/img/omhoog.jpg',alt:'De Fermo omhoog uit de onderbak',cap:['Op uw eigen hoogte in en uit bed','Het hele bed gaat omhoog en omlaag']},
   {img:'../salespagina/img/samen-split.jpg',alt:'Tweepersoons Fermo met één helft omhoog',cap:['Ieder een eigen matras','Samen slapen, tot 200 cm breed']},
   {vid:'../salespagina/vid/stel.mp4',poster:'../salespagina/img/stel.jpg',cap:['Samen blijven slapen','In uw eigen slaapkamer']},
-  {img:'../salespagina/img/detail.jpg',alt:'Hoek van het gestoffeerde bed',cap:['44 stoffen en kleuren','Gemaakt in Deventer']},
 ];}
 let cur = 0;
 function showSlide(i){
