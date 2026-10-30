@@ -113,6 +113,8 @@ header.site{position:sticky;top:0;z-index:40;background:var(--wit);border-bottom
 .obox span{font-size:16px}
 .obox .btn{width:auto;min-height:48px;padding:10px 18px;font-size:17px}
 @media(max-width:460px){.redenen{grid-template-columns:1fr}}
+.whoprev{display:none;border-radius:var(--r);overflow:hidden;margin-top:6px}
+.whoprev video{width:100%;aspect-ratio:4/3;object-fit:cover}
 .buy{display:grid;gap:14px}
 .eenmalig{font-size:15.5px;color:var(--muted);line-height:1.4}
 .brform{display:grid;gap:6px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px}
@@ -315,6 +317,7 @@ footer p{max-width:80ch}
         <button type="button" class="opt who" data-who="samen">Voor ons samen<small>180 x 200 cm</small></button>
         <button type="button" class="opt who" data-who="alleen">Voor mij alleen<small>90 x 200 cm</small></button>
       </div>
+      <div class="whoprev"><video id="whoV" muted loop playsinline></video></div>
     </div>
 
     <div class="step"><span>Hoe lang wilt u huren?</span>
@@ -575,14 +578,17 @@ function lines(){
 const total = () => lines().reduce((a, x) => a + x[1], 0);
 
 /* galerij */
-function slides(){ return [
+function slides(){ const sa = S.who === 'samen'; return [
   {img:`../salespagina/img/kleur-${S.k}.jpg`,cap:['Het lijkt een gewone boxspring','Maar hij helpt u overeind']},
-  {vid:'../salespagina/vid/staop.mp4',poster:'../salespagina/img/staop.jpg',cap:['Sta-op-stand','Van liggen naar zitten']},
-  {vid:'../salespagina/vid/verstel.mp4',poster:'../salespagina/img/verstel.jpg',cap:['Rug en benen apart','Met één afstandsbediening']},
+  sa ? {vid:'../salespagina/vid/verstel.mp4',poster:'../salespagina/img/verstel.jpg',cap:['Voor u samen','Rug en benen apart instelbaar']}
+     : {vid:'../salespagina/vid/staop.mp4',poster:'../salespagina/img/staop.jpg',cap:['Voor u alleen','Van liggen naar zitten']},
+  sa ? {vid:'../salespagina/vid/samen.mp4',poster:'../salespagina/img/samen-split.jpg',cap:['Ieder een eigen matras','Samen slapen, tot 200 cm breed']}
+     : {vid:'../salespagina/vid/hoog.mp4',poster:'../salespagina/img/hoog.jpg',cap:['Op uw eigen hoogte','Eén knop en het bed gaat omhoog']},
   {vid:'../salespagina/vid/echt.mp4',poster:'../salespagina/img/echt-staop.jpg',echt:1,cap:['Omhoog, kantelen, rechtop','De echte Fermo in beweging']},
   {img:'../salespagina/img/omhoog.jpg',alt:'De Fermo omhoog uit de onderbak',cap:['Op uw eigen hoogte in en uit bed','Het hele bed gaat omhoog en omlaag']},
-  {img:'../salespagina/img/samen-split.jpg',alt:'Tweepersoons Fermo met één helft omhoog',cap:['Ieder een eigen matras','Samen slapen, tot 200 cm breed']},
-  {vid:'../salespagina/vid/stel.mp4',poster:'../salespagina/img/stel.jpg',cap:['Samen blijven slapen','In uw eigen slaapkamer']},
+  sa ? {vid:'../salespagina/vid/stel.mp4',poster:'../salespagina/img/stel.jpg',cap:['Samen blijven slapen','In uw eigen slaapkamer']}
+     : {img:'../salespagina/img/staop-zit.jpg',alt:'Vrouw zit rechtop in de sta-op-stand',cap:['Op uw eigen tijd uit bed','Zelf uw stand kiezen']},
+  {img:'../salespagina/img/detail.jpg',alt:'Hoek van het gestoffeerde bed',cap:['44 stoffen en kleuren','Kies de stof die bij uw kamer past']},
 ];}
 let cur = 0;
 function showSlide(i){
@@ -612,7 +618,13 @@ function showKleur(){
   const st = document.getElementById('stage');
   if (innerWidth >= 900 && st.getBoundingClientRect().bottom < 140) st.scrollIntoView({block:'center'});
 }
-function setWho(w){ S.who = w; render(); }
+function toonWho(){
+  renderThumbs(); showSlide(1);
+  const sl = slides()[1], v = document.getElementById('whoV'), st = document.getElementById('stage');
+  if (innerWidth < 900) { v.src = sl.vid; v.poster = sl.poster; v.parentNode.style.display = 'block'; v.play().catch(() => {}); }
+  else if (st.getBoundingClientRect().bottom < 140) st.scrollIntoView({block: 'center'});
+}
+function setWho(w){ S.who = w; render(); toonWho(); }
 document.querySelectorAll('[data-who]').forEach(b => b.onclick = () => setWho(b.dataset.who));
 document.querySelectorAll('[data-who-link]').forEach(a => a.addEventListener('click', () => setWho(a.dataset.whoLink)));
 
