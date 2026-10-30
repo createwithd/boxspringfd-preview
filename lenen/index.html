@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Hoog-laag bed gratis lenen via uw zorgverzekering</title>
+<title>Hoog-laag bed gratis lenen</title>
 <meta name="description" content="Met een medische indicatie kunt u een hoog-laag bed tot 26 weken gratis lenen via uw zorgverzekering. Wij kijken met u of dat kan.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -102,7 +102,27 @@ header.site{position:sticky;top:0;z-index:40;background:var(--wit);border-bottom
 .thumbs img{width:100%;height:100%;object-fit:cover}
 .thumbs .pl::after{content:"▶";position:absolute;inset:0;display:grid;place-items:center;color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.7);font-size:18px}
 
+.redenen{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 14px}
+.redenen li{position:relative;padding-left:26px;font-size:15px;line-height:1.3;color:var(--muted)}
+.redenen li::before{content:"✓";position:absolute;left:0;top:0;color:var(--ok);font-weight:700;font-size:18px}
+.redenen b{display:block;font:700 16px var(--fh);color:var(--ink)}
+.ouders{padding:0 0 34px}
+.obox{background:var(--vak);border-radius:var(--r);padding:15px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--ink)}
+.obox>div{flex:1 1 320px}
+.obox b{display:block;font:700 18px var(--fh)}
+.obox span{font-size:16px}
+.obox .btn{width:auto;min-height:48px;padding:10px 18px;font-size:17px}
+@media(max-width:460px){.redenen{grid-template-columns:1fr}}
 .buy{display:grid;gap:14px}
+.mod{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:14px}
+.mod[hidden]{display:none}
+.mods{position:absolute;inset:0;background:rgba(10,18,44,.55)}
+.modb{position:relative;background:var(--paper);border-radius:12px;padding:20px;width:min(480px,100%);display:grid;gap:12px;max-height:94vh;overflow:auto}
+.modx{justify-self:end;border:0;background:none;font:600 16px var(--fh);color:var(--ink)}
+.modn{font:600 15px var(--fh);color:var(--muted);margin:0}
+.modb h2{font-size:25px;margin-bottom:12px}
+.modb .opt{width:100%;margin-bottom:8px}
+.modb .brform{background:none;border:0;padding:0}
 .lbox{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:13px}
 .lbox h2{font-size:25px}
 .lbox .brform{background:none;border:0;padding:0}
@@ -281,7 +301,7 @@ footer p{max-width:80ch}
   <a href="https://boxspringfd.nl/"><img src="../salespagina/img/logo.png" alt="BoxspringFD" width="314" height="199"></a>
   <nav class="nav" aria-label="Hoofdmenu"><a href="https://boxspringfd.nl/">Home</a><a href="https://boxspringfd.nl/">Hoog laag boxsprings</a><a href="#reviews">Reviews</a><a href="#showroom">Showroom</a></nav>
   <a class="tel" href="tel:0852127250">☎ <span>085 2127250</span></a>
-  <a class="cartbtn" href="#kopen" style="text-decoration:none">Gratis lenen checken</a>
+  <button class="cartbtn" type="button" data-open>Gratis lenen</button>
 </div></header>
 
 <div class="dealbar">Met een medische indicatie tot 26 weken gratis lenen</div>
@@ -297,33 +317,45 @@ footer p{max-width:80ch}
   </div>
 
   <div class="buy" id="kopen">
-        <h1>Hoog-laag bed nodig? Mogelijk gratis via uw zorgverzekering</h1>
-    <p class="intro">Met een medische indicatie kunt u een hoog-laag bed tot 26 weken zonder kosten lenen. Wij kijken met u of dat kan en helpen met de aanvraag.</p>
+        <h1>Hoog-laag bed gratis lenen via uw zorgverzekering</h1>
+    <p class="intro">Een mooi bed dat u overeind helpt, tot 26 weken zonder kosten. Wij helpen met de aanvraag.</p>
     <div class="score"><span class="stars" aria-hidden="true">★★★★★</span> <b>4,8</b> uit 46 reviews op <a href="https://nl.trustpilot.com/review/www.boxspringfd.nl">Trustpilot</a></div>
+    <ul class="redenen">
+      <li><b>Lijkt een gewone boxspring</b>Geen zorgbed in uw slaapkamer</li>
+      <li><b>Helpt u overeind</b>Omhoog, kantelen en rechtop</li>
+      <li><b>Samen blijven slapen</b>Tot 200 cm, ieder een eigen matras</li>
+      <li><b>Gemaakt in Deventer</b>15 jaar garantie op frame en bodem</li>
+    </ul>
 
-    <div class="lbox">
-      <h2>Kunt u gratis lenen?</h2>
-      <ol class="stap3">
-        <li><b>U laat uw gegevens achter</b>Wij bellen u en kijken of u in aanmerking komt.</li>
-        <li><b>Indicatie</b>Een arts of wijkverpleegkundige bekijkt wat u nodig heeft.</li>
-        <li><b>Aanvraag bij uw verzekeraar</b>Die beoordeelt of het bed vergoed wordt.</li>
-        <li><b>Bezorgd en opgebouwd</b>Tot 26 weken zonder kosten.</li>
-      </ol>
-      <form class="brform" id="leForm">
-        <label for="leNaam">Uw naam</label><input id="leNaam" name="naam" autocomplete="name" required>
-        <label for="leTel">Uw telefoonnummer</label><input id="leTel" name="telefoon" type="tel" autocomplete="tel" required>
-        <label for="leVz">Uw zorgverzekeraar</label><input id="leVz" name="verzekeraar" required>
-        <button class="btn" type="submit">Check of u gratis kunt lenen</button>
-      </form>
-      <p class="brok" id="leOk" hidden><b>Voorbeeld:</b> in de echte versie belt BoxspringFD de klant terug.</p>
-      <p class="klein">Lukt lenen niet, of heeft u het bed langer nodig? Dan kunt u de Fermo <a href="../huren/">huren</a> of <a href="../salespagina/">kopen</a>.</p>
+    <div class="step"><span>Voor wie is het bed?</span>
+      <div class="opts two">
+        <button type="button" class="opt who" data-who="samen">Voor ons samen<small>180 x 200 cm</small></button>
+        <button type="button" class="opt who" data-who="alleen">Voor mij alleen<small>90 x 200 cm</small></button>
+      </div>
+    </div>
+
+    <div class="step"><span>Kleur <small id="kleurNaam"></small></span>
+      <div class="swatches" id="swatches"></div>
+      <div class="kleurprev"><img id="kleurPrev" src="../salespagina/img/kleur-bruin.jpg" alt="De Fermo in de gekozen kleur"></div>
+    </div>
+
+    <div class="pricebox">
+      <div class="prices"><strong>Gratis</strong><span class="vanaf">tot 26 weken</span></div>
+      <p class="eenmalig">Met een medische indicatie, via uw zorgverzekering.</p>
+      <button class="btn" type="button" data-open>Gratis lenen</button>
+      <a class="tekstlink" href="tel:0852127250">Liever bellen? 085 2127250</a>
+      <ul class="trust">
+        <li><i>✓</i>Wij helpen met de aanvraag</li>
+        <li><i>✓</i>Bezorgd en opgebouwd</li>
+        <li><i>✓</i>Daarna huren of kopen kan ook</li>
+      </ul>
     </div>
   </div>
 </div>
 </div>
 
 <div class="chips"><div class="wrap">
-  <a href="#werkt">Zo werkt het</a><a href="#vergelijk">Lenen, huren of kopen</a><a href="#samen">Samen slapen</a><a href="#zelf">Zelfstandig</a><a href="#voorwaarden">Voorwaarden</a><a href="#reviews">Reviews</a><a href="#vragen">Vragen</a>
+  <a href="#werkt">Zo werkt het</a><a href="#vergelijk">Lenen, huren of kopen</a><a href="#samen">Samen slapen</a><a href="#zelf">Zelfstandig</a><a href="#voorwaarden">Zo werkt het</a><a href="#reviews">Reviews</a><a href="#vragen">Vragen</a>
 </div></div>
 
 <section class="sec" id="werkt"><div class="wrap">
@@ -378,7 +410,7 @@ footer p{max-width:80ch}
         <li><i>✓</i>Medium of stevig, per persoon</li>
         <li><i>✓</i>Wie hulp nodig heeft, krijgt die op werkhoogte</li>
       </ul>
-      <a class="btn inl" href="#kopen">Check of u gratis kunt lenen</a>
+      <button class="btn inl" type="button" data-open>Gratis lenen</button>
     </div>
   </div>
   <div class="split flip" style="margin-top:34px">
@@ -400,7 +432,7 @@ footer p{max-width:80ch}
 </div></section>
 
 <section class="sec alt" id="voorwaarden"><div class="wrap">
-  <div class="head"><h2>Wanneer komt u in aanmerking?</h2><p>Uw zorgverzekeraar beslist. Dit zijn de punten waar in de regel naar gekeken wordt.</p></div>
+  <div class="head"><h2>Zo werkt gratis lenen</h2><p>U heeft een medische indicatie nodig. Uw zorgverzekeraar beoordeelt de aanvraag, en wij helpen u daarbij.</p></div>
   <div class="split" style="align-items:start">
     <div class="copy">
       <ul>
@@ -414,6 +446,11 @@ footer p{max-width:80ch}
     <div class="media"><video data-src="../salespagina/vid/verstel.mp4" poster="../salespagina/img/verstel.jpg" muted loop playsinline aria-label="Rug en benen van het bed bewegen"></video></div>
   </div>
 </div></section>
+
+<section class="ouders"><div class="wrap"><div class="obox">
+  <div><b>Regelt u dit voor uw vader of moeder?</b><span>Bel ons gerust. We leggen alles rustig uit aan uw ouders en regelen bezorging, montage en het oude bed.</span></div>
+  <a class="btn ghost" href="tel:0852127250">Bel 085 2127250</a>
+</div></div></section>
 
 <section class="sec" id="reviews"><div class="wrap">
   <div class="head"><h2>Wat klanten zeggen</h2></div>
@@ -451,7 +488,7 @@ footer p{max-width:80ch}
 <section class="sec" id="vragen"><div class="wrap">
   <div class="head"><h2>Veelgestelde vragen</h2></div>
   <div class="faq">
-    <details open><summary>Is lenen echt gratis?</summary><p>Hulpmiddelen voor behandeling en verpleging kunt u tot 26 weken zonder kosten lenen. Vraag uw verzekeraar of dat ook voor u geldt en of het volledig uit de basisverzekering wordt vergoed.</p></details>
+    <details open><summary>Wat kost lenen?</summary><p>Hulpmiddelen voor behandeling en verpleging kunt u tot 26 weken zonder kosten lenen. Vraag uw verzekeraar of dat ook voor u geldt en of het volledig uit de basisverzekering wordt vergoed.</p></details>
     <details><summary>Heb ik een indicatie nodig?</summary><p>Meestal wel, van een arts of wijkverpleegkundige. Uw verzekeraar vertelt u wat er nodig is.</p></details>
     <details><summary>Krijg ik dan ook de Fermo?</summary><p>Dat hangt af van uw verzekeraar. Een leenbed is vaak een zorgbed. Wilt u zeker de Fermo, dan kunt u hem huren of kopen.</p></details>
     <details><summary>Wat gebeurt er na 26 weken?</summary><p>Dan stopt het gratis lenen meestal. U kunt dan huren of kopen. Soms kan dat met korting, vraag ernaar.</p></details>
@@ -463,18 +500,26 @@ footer p{max-width:80ch}
 <section class="final"><div class="wrap">
   <div class="split">
     <div class="copy">
-      <h2>Kijk of u gratis kunt lenen</h2>
-      <p>Laat uw gegevens achter. Wij bellen u terug en kijken met u mee.</p>
-      <div class="cta"><a class="btn" href="#kopen">Check of u gratis kunt lenen</a><a class="btn ghost" href="../huren/">Bekijk huren</a></div>
+      <h2>Leen uw hoog-laag bed gratis</h2>
+      <p>Eén knop, een paar korte vragen en wij bellen u terug.</p>
+      <div class="cta"><button class="btn" type="button" data-open>Gratis lenen</button><a class="btn ghost" href="../huren/">Bekijk huren</a></div>
     </div>
     <div class="media"><img src="../salespagina/img/echt-hero.jpg" alt="De Fermo in een warme slaapkamer" loading="lazy"></div>
   </div>
 </div></section>
 </main>
+<div class="mod" id="mod" hidden>
+  <div class="mods" id="modS"></div>
+  <div class="modb" role="dialog" aria-modal="true" aria-label="Gratis lenen aanvragen">
+    <button class="modx" type="button" id="modX">Sluiten ✕</button>
+    <p class="modn" id="modN"></p>
+    <div id="modI"></div>
+  </div>
+</div>
 
 <footer><div class="wrap"><p>Preview van een salespagina voor BoxspringFD, Nijmegensestraat 7D, 7418 BZ Deventer. Prijzen in euro's inclusief btw, bron: boxspringfd.nl. Sfeerbeelden tonen geen echte klanten. Gratis lenen geldt alleen met indicatie en goedkeuring van uw zorgverzekeraar. Reviews komen van Trustpilot.</p></div></footer>
 
-<div class="mobbar"><a class="btn" href="#kopen" id="mobBtn">Check of u gratis kunt lenen</a></div>
+<div class="mobbar"><button class="btn" type="button" data-open id="mobBtn">Gratis lenen</button></div>
 
 <script>
 const BF = document.body.dataset.mode === 'bf';
@@ -538,7 +583,11 @@ function renderThumbs(){
 const HUUR = {samen:{lang:219,kort:279}, alleen:{lang:149,kort:189}};
 S.dur = 'lang';
 const KL3 = KLEUR.filter(k => ['bruin', 'grijs', 'beige'].includes(k[0]));
-function render(){}
+function render(){
+  document.querySelectorAll('[data-who]').forEach(b => b.setAttribute('aria-pressed', b.dataset.who === S.who));
+  document.getElementById('swatches').innerHTML = KLEUR.map(k => `<button type="button" class="sw" style="background:${k[2]}" aria-label="${k[1]}" aria-pressed="${k[0] === S.k}" data-k="${k[0]}"></button>`).join('');
+  document.getElementById('kleurNaam').textContent = KLEUR.find(k => k[0] === S.k)[1];
+}
 function fixLen(){ if (S.w === 180 && S.l === 220) S.l = 210; }
 function showKleur(){
   renderThumbs(); render(); showSlide(0);
@@ -551,7 +600,35 @@ document.querySelectorAll('[data-who]').forEach(b => b.onclick = () => setWho(b.
 document.querySelectorAll('[data-who-link]').forEach(a => a.addEventListener('click', () => setWho(a.dataset.whoLink)));
 
 document.querySelectorAll('[data-dur]').forEach(b => b.onclick = () => { S.dur = b.dataset.dur; render(); });
-document.getElementById('leForm').addEventListener('submit', e => { e.preventDefault(); e.target.hidden = true; document.getElementById('leOk').hidden = false; });
+/* vragen pas na de knop, één vraag per scherm */
+const mod = document.getElementById('mod'), modI = document.getElementById('modI'), modN = document.getElementById('modN');
+const VR = [
+  {v:'Voor wie is het bed?', o:['Voor mijzelf','Voor mijn partner','Voor mijn vader of moeder']},
+  {v:'Heeft u al een indicatie van een arts of wijkverpleegkundige?', o:['Ja','Nog niet','Weet ik niet']},
+  {v:'Bij welke zorgverzekeraar zit u?', i:{id:'mVz',t:'Uw zorgverzekeraar'}},
+];
+let vs = 0;
+function vraag(){
+  modN.textContent = `Stap ${Math.min(vs + 1, 4)} van 4`;
+  if (vs < VR.length) {
+    const q = VR[vs];
+    modI.innerHTML = `<h2>${q.v}</h2>` + (q.o ? q.o.map(x => `<button type="button" class="opt" data-next>${x}</button>`).join('')
+      : `<form class="brform" id="mStap"><label for="${q.i.id}">${q.i.t}</label><input id="${q.i.id}" required><button class="btn" type="submit">Volgende</button></form>`);
+  } else if (vs === VR.length) {
+    modI.innerHTML = `<h2>Waar kunnen wij u bereiken?</h2><form class="brform" id="mStap"><label for="mNaam">Uw naam</label><input id="mNaam" autocomplete="name" required><label for="mTel">Uw telefoonnummer</label><input id="mTel" type="tel" autocomplete="tel" required><button class="btn" type="submit">Gratis lenen aanvragen</button></form>`;
+  } else {
+    modN.textContent = '';
+    modI.innerHTML = '<h2>Bedankt</h2><p class="brok"><b>Voorbeeld:</b> in de echte versie belt BoxspringFD de klant terug om de aanvraag te regelen.</p>';
+  }
+}
+document.addEventListener('click', e => {
+  if (e.target.closest('[data-open]')) { vs = 0; vraag(); mod.hidden = false; }
+  if (e.target.closest('[data-next]')) { vs++; vraag(); }
+});
+modI.addEventListener('submit', e => { e.preventDefault(); vs++; vraag(); });
+document.getElementById('modX').onclick = () => { mod.hidden = true; };
+document.getElementById('modS').onclick = () => { mod.hidden = true; };
+addEventListener('keydown', e => { if (e.key === 'Escape') mod.hidden = true; });
 
 /* alle keuzes via één luisteraar */
 document.addEventListener('click', e => {
@@ -599,8 +676,9 @@ renderThumbs(); render(); showSlide(0);
 /* Post-its: korte uitleg in simpele taal */
 const PI = [
   ['.gallery', '<b>Beweging</b>Video laat meteen zien wat het bed doet.', 'right:8px;top:8px'],
-  ['.lbox', '<b>Gratis trekt aan</b>Lage drempel, de voorwaarden staan er direct bij.', 'right:0;top:-58px'],
-  ['#voorwaarden .head', '<b>Eerlijk</b>Wie niet in aanmerking komt, weet dat meteen.', 'right:0;top:-14px'],
+  ['.redenen', '<b>Koopredenen</b>De 4 redenen uit de doelgroepen, vlak bij de knop.', 'right:0;top:-66px'],
+  ['.pricebox', '<b>Lage drempel</b>Gratis trekt aan, de vragen komen pas na de knop.', 'right:0;top:-54px'],
+  ['.ouders', '<b>Avatar kinderen</b>Klein blok, laag op de pagina.', 'right:20px;top:-60px'],
   ['.faq', '<b>Geen teleurstelling</b>Ook wat er na 26 weken gebeurt.', 'right:0;top:-54px'],
 ];
 PI.forEach(([sel, txt, pos], i) => {
