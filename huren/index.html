@@ -106,6 +106,21 @@ header.site{position:sticky;top:0;z-index:40;background:var(--wit);border-bottom
 .redenen li{position:relative;padding-left:26px;font-size:15px;line-height:1.3;color:var(--muted)}
 .redenen li::before{content:"✓";position:absolute;left:0;top:0;color:var(--ok);font-weight:700;font-size:18px}
 .redenen b{display:block;font:700 16px var(--fh);color:var(--ink)}
+.mod{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:14px}
+.mod[hidden]{display:none}
+.mods{position:absolute;inset:0;background:rgba(10,18,44,.55)}
+.modb{position:relative;background:var(--paper);border-radius:12px;padding:20px;width:min(480px,100%);display:grid;gap:12px;max-height:94vh;overflow:auto}
+.modx{justify-self:end;border:0;background:none;font:600 16px var(--fh);color:var(--ink)}
+.modn{font:600 15px var(--fh);color:var(--muted);margin:0}
+.modb h2{font-size:25px;margin-bottom:12px}
+.modb .opt{width:100%;margin-bottom:8px}
+.modb .brform{background:none;border:0;padding:0}
+.stap3{list-style:none;margin:0;padding:0;display:grid;gap:8px;counter-reset:s}
+.stap3 li{counter-increment:s;position:relative;padding-left:40px;font-size:16px;line-height:1.4}
+.stap3 li::before{content:counter(s);position:absolute;left:0;top:1px;width:28px;height:28px;border-radius:50%;background:var(--nacht);color:#fff;font:700 15px/28px var(--fh);text-align:center}
+.copy .stap3 li{display:block}
+.copy .stap3{margin:0 0 16px}
+.stap3 b{display:block;font:700 17px var(--fh);color:var(--ink)}
 .tips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .tip{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:20px}
 .tip h3{margin:0 0 6px;font:700 18px/1.25 var(--fh);color:var(--ink)}
@@ -292,7 +307,7 @@ footer p{max-width:80ch}
   <a href="https://boxspringfd.nl/"><img src="../salespagina/img/logo.png" alt="BoxspringFD" width="314" height="199"></a>
   <nav class="nav" aria-label="Hoofdmenu"><a href="https://boxspringfd.nl/">Home</a><a href="https://boxspringfd.nl/">Hoog laag boxsprings</a><a href="#reviews">Reviews</a><a href="#showroom">Showroom</a></nav>
   <a class="tel" href="tel:0852127250">☎ <span>085 2127250</span></a>
-  <a class="cartbtn" href="#huren" style="text-decoration:none">Huur aanvragen</a>
+  <button class="cartbtn" type="button" data-open>Adviesgesprek plannen</button>
 </div></header>
 
 <div class="dealbar">Hoog laag boxspring huren vanaf €149 per maand</div>
@@ -341,9 +356,10 @@ footer p{max-width:80ch}
     <div class="pricebox">
       <div class="prices"><strong id="pNow"></strong><span class="vanaf">per maand</span></div>
       <p class="eenmalig">Eenmalig €199 voor bezorgen, opbouwen, ophalen en schoonmaken. Eigen nieuw matras vanaf €210.</p>
-      <a class="btn" href="#huren">Vraag uw huurbed aan</a>
+      <button class="btn" type="button" data-open>Plan een gratis adviesgesprek</button>
       <a class="tekstlink" href="tel:0852127250">Liever bellen? 085 2127250</a>
       <ul class="trust">
+        <li><i>✓</i>U sluit online niets af: eerst komt een adviseur langs</li>
         <li><i>✓</i>Onderhoud zit bij de huur inbegrepen</li>
         <li><i>✓</i>Wij bezorgen, bouwen op en halen weer op</li>
         <li><i>✓</i>Bevalt hij? Dan telt de huur mee bij aankoop</li>
@@ -492,20 +508,16 @@ footer p{max-width:80ch}
 <section class="sec" id="huren"><div class="wrap">
   <div class="split">
     <div class="copy">
-      <h2>Vraag uw huurbed aan</h2>
-      <p>Laat uw gegevens achter. Wij bellen u terug om de maat, kleur en bezorgdatum door te nemen. U zit nergens aan vast.</p>
-      <div class="media"><img src="../salespagina/img/staop-zit.jpg" alt="Vrouw zit rechtop in de sta-op-stand van het bed" loading="lazy"></div>
+      <h2>De volgende stap: wij komen bij u langs</h2>
+      <p>Huren sluit u niet online af. Elke situatie is anders, dus eerst komt een adviseur gratis bij u thuis.</p>
+      <ol class="stap3">
+        <li><b>U plant een afspraak</b>Op een moment dat u uitkomt. Uw partner of kinderen kunnen erbij zijn.</li>
+        <li><b>De adviseur komt bij u thuis</b>We kijken wat u nodig heeft en stellen de juiste vragen, bijvoorbeeld over allergie en wie u thuis helpt.</li>
+        <li><b>U beslist</b>Past de Fermo? Dan spreken we samen de huur en de bezorgdatum af. U zit nergens aan vast.</li>
+      </ol>
+      <button class="btn inl" type="button" data-open>Plan een gratis adviesgesprek</button>
     </div>
-    <form class="brform" id="hrForm">
-      <label for="hrNaam">Uw naam</label><input id="hrNaam" name="naam" autocomplete="name" required>
-      <label for="hrTel">Uw telefoonnummer</label><input id="hrTel" name="telefoon" type="tel" autocomplete="tel" required>
-      <label for="hrPlaats">Uw woonplaats</label><input id="hrPlaats" name="plaats" autocomplete="address-level2" required>
-      <label for="hrBed">Welk bed?</label><select id="hrBed" name="bed"><option>Tweepersoons, 180 x 200 cm</option><option>Eenpersoons, 90 x 200 cm</option></select>
-      <label for="hrDuur">Hoe lang?</label><select id="hrDuur" name="duur"><option>6 maanden of langer</option><option>2 tot 5 maanden</option><option>Weet ik nog niet</option></select>
-      <label for="hrWanneer">Wanneer heeft u het bed nodig?</label><select id="hrWanneer" name="wanneer"><option>Zo snel mogelijk</option><option>Binnen een maand</option><option>Later</option></select>
-      <button class="btn" type="submit">Vraag uw huurbed aan</button>
-    </form>
-    <p class="brok" id="hrOk" hidden><b>Voorbeeld:</b> in de echte versie belt BoxspringFD de klant terug.</p>
+    <div class="media"><img src="../salespagina/img/staop-zit.jpg" alt="Vrouw zit rechtop in de sta-op-stand van het bed" loading="lazy"></div>
   </div>
 </div></section>
 
@@ -519,7 +531,7 @@ footer p{max-width:80ch}
         <li><i>✓</i>Gratis advies aan huis, zonder verplichtingen</li>
         <li><i>✓</i>Bel 085 2127250. U spreekt iemand die onze bedden kent.</li>
       </ul>
-      <a class="btn inl" href="https://boxspringfd.nl/">Vraag gratis advies aan huis</a>
+      <button class="btn inl" type="button" data-open>Plan een gratis adviesgesprek</button>
     </div>
     <div class="media"><video data-src="../salespagina/vid/stel.mp4" poster="../salespagina/img/stel.jpg" muted loop playsinline aria-label="Stel van rond de zeventig zit samen rechtop in de Fermo"></video></div>
   </div>
@@ -529,6 +541,7 @@ footer p{max-width:80ch}
   <div class="head"><h2>Veelgestelde vragen</h2></div>
   <div class="faq">
     <details open><summary>Wat kost huren precies?</summary><p>Vanaf €149 per maand voor eenpersoons en €219 voor tweepersoons, bij 6 maanden of langer. Daarbij komt eenmalig €199 voor bezorgen, opbouwen, ophalen en schoonmaken, en een eigen nieuw matras vanaf €210.</p></details>
+    <details><summary>Moet ik online een contract afsluiten?</summary><p>Nee. Eerst komt een adviseur gratis bij u langs. Past de Fermo en wilt u huren? Dan spreken we samen de huur en de bezorgdatum af.</p></details>
     <details><summary>Kan ik niet gratis lenen?</summary><p>Dat kan soms. Via uw verzekeraar, zorgorganisatie of een leverancier kunt u bij behandeling of verpleging tot 26 weken gratis lenen. Vraag dit eerst na. Dat is meestal een zorgbed. Wilt u een gewone boxspring, dan is huren een alternatief.</p></details>
     <details><summary>Wordt huren vergoed?</summary><p>Dat hangt af van uw verzekeraar en uw situatie. Vraag dit na voordat u huurt.</p></details>
     <details><summary>Waarom koop ik zelf een matras?</summary><p>Een matras is persoonlijk. U slaapt op uw eigen nieuwe matras en dat blijft van u.</p></details>
@@ -547,16 +560,24 @@ footer p{max-width:80ch}
     <div class="copy">
       <h2>Eerst huren, dan beslissen</h2>
       <p>Een mooi bed voor zolang u het nodig heeft. Bevalt hij, dan telt de huur mee bij aankoop.</p>
-      <div class="cta"><a class="btn" href="#huren">Vraag uw huurbed aan</a><a class="btn ghost" href="#prijzen">Bekijk de huurprijzen</a></div>
+      <div class="cta"><button class="btn" type="button" data-open>Plan een gratis adviesgesprek</button><a class="btn ghost" href="#prijzen">Bekijk de huurprijzen</a></div>
     </div>
     <div class="media"><img src="../salespagina/img/echt-hero.jpg" alt="De Fermo in een warme slaapkamer" loading="lazy"></div>
   </div>
 </div></section>
 </main>
+<div class="mod" id="mod" hidden>
+  <div class="mods" id="modS"></div>
+  <div class="modb" role="dialog" aria-modal="true" aria-label="Uw aanvraag">
+    <button class="modx" type="button" id="modX">Sluiten ✕</button>
+    <p class="modn" id="modN"></p>
+    <div id="modI"></div>
+  </div>
+</div>
 
 <footer><div class="wrap"><p>Preview van een salespagina voor BoxspringFD, Nijmegensestraat 7D, 7418 BZ Deventer. Prijzen in euro's inclusief btw, bron: boxspringfd.nl. Sfeerbeelden tonen geen echte klanten. Reviews komen van Trustpilot.</p></div></footer>
 
-<div class="mobbar"><a class="btn" href="#huren" id="mobBtn">Huren vanaf €149 per maand</a></div>
+<div class="mobbar"><button class="btn" type="button" data-open id="mobBtn">Plan een gratis adviesgesprek</button></div>
 
 <script>
 const BF = document.body.dataset.mode === 'bf';
@@ -648,7 +669,30 @@ document.querySelectorAll('[data-who]').forEach(b => b.onclick = () => setWho(b.
 document.querySelectorAll('[data-who-link]').forEach(a => a.addEventListener('click', () => setWho(a.dataset.whoLink)));
 
 document.querySelectorAll('[data-dur]').forEach(b => b.onclick = () => { S.dur = b.dataset.dur; render(); });
-document.getElementById('hrForm').addEventListener('submit', e => { e.preventDefault(); e.target.hidden = true; document.getElementById('hrOk').hidden = false; });
+
+/* gegevens pas na de knop, één vraag per scherm; in de preview wordt niets verstuurd */
+const mod = document.getElementById('mod'), modI = document.getElementById('modI'), modN = document.getElementById('modN');
+const NAAM = ['Uw naam','text','name'], TEL = ['Uw telefoonnummer','tel','tel'], PLAATS = ['Uw woonplaats','text','address-level2'];
+const FLOW = {
+  advies:{q:[{v:'Voor wie is het bed?',o:['Voor mijzelf','Voor ons samen','Voor mijn vader of moeder','Voor iemand anders']},{v:'Hoe lang denkt u het bed nodig te hebben?',o:['6 maanden of langer','2 tot 5 maanden','Weet ik nog niet']},{v:'Wanneer heeft u het bed nodig?',o:['Zo snel mogelijk','Binnen een maand','Later']}],k:'Waar mag de adviseur u bellen?',c:[NAAM,TEL,PLAATS],b:'Plan mijn adviesgesprek',ok:'in de echte versie belt BoxspringFD de klant om het bezoek af te spreken.'},
+};
+let fl = FLOW.advies, vs = 0;
+function vraag(){
+  const q = fl.q;
+  modN.textContent = q.length && vs <= q.length ? `Stap ${vs + 1} van ${q.length + 1}` : '';
+  if (vs < q.length) modI.innerHTML = `<h2>${q[vs].v}</h2>` + q[vs].o.map(x => `<button type="button" class="opt" data-next>${x}</button>`).join('');
+  else if (vs === q.length) modI.innerHTML = `<h2>${fl.k}</h2><form class="brform" id="mStap">` + fl.c.map((c, i) => `<label for="mV${i}">${c[0]}</label><input id="mV${i}" type="${c[1]}" autocomplete="${c[2]}" required>`).join('') + `<button class="btn" type="submit">${fl.b}</button></form>`;
+  else modI.innerHTML = `<h2>Bedankt</h2><p class="brok"><b>Voorbeeld:</b> ${fl.ok}</p>`;
+}
+document.addEventListener('click', e => {
+  const o = e.target.closest('[data-open]');
+  if (o) { fl = FLOW[o.dataset.open || 'advies']; vs = 0; vraag(); mod.hidden = false; }
+  if (e.target.closest('[data-next]')) { vs++; vraag(); }
+});
+modI.addEventListener('submit', e => { e.preventDefault(); vs++; vraag(); });
+document.getElementById('modX').onclick = () => { mod.hidden = true; };
+document.getElementById('modS').onclick = () => { mod.hidden = true; };
+addEventListener('keydown', e => { if (e.key === 'Escape') mod.hidden = true; });
 
 /* alle keuzes via één luisteraar */
 document.addEventListener('click', e => {
@@ -699,7 +743,7 @@ const PI = [
   ['.pricebox', '<b>Prijs voelt licht</b>Maandbedrag groot, eenmalige kosten eerlijk erbij.', 'right:0;top:-54px'],
   ['#vergelijk .head', '<b>Eerlijk vergelijken</b>Ook gratis lenen staat erbij. Dat wekt vertrouwen.', 'right:0;top:-14px'],
   ['#prijzen .head', '<b>Geen verrassingen</b>Alles wat het kost op één plek.', 'right:0;top:-14px'],
-  ['#huren .copy', '<b>Bellen in plaats van bestellen</b>Bij huur willen mensen eerst iemand spreken.', 'right:0;top:-44px'],
+  ['#huren .copy', '<b>Eerst langskomen</b>Geen contract online. De adviseur komt, dan pas de huur.', 'right:0;top:-44px'],
   ['.faq', '<b>Eerlijk antwoord</b>Ook wanneer kopen voordeliger is.', 'right:0;top:-54px'],
 ];
 PI.forEach(([sel, txt, pos], i) => {

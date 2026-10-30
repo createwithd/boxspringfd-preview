@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Hoog laag bed op maat: wij komen bij u langs</title>
-<meta name="description" content="Welk hoog-laag bed past het best bij u? Wij komen bij u langs en u krijgt een offerte op maat. Liever eerst de brochure of de showroom in Deventer kan ook.">
+<meta name="description" content="Elke situatie is anders. Daarom komt onze adviseur gratis bij u thuis en helpt u de beste keuze te maken. Liever eerst de brochure of de showroom in Deventer kan ook.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Noto+Sans:wght@400;600;700&display=swap">
@@ -127,10 +127,18 @@ header.site{position:sticky;top:0;z-index:40;background:var(--wit);border-bottom
 .stap3 li{counter-increment:s;position:relative;padding-left:40px;font-size:16px;line-height:1.4}
 .stap3 li::before{content:counter(s);position:absolute;left:0;top:1px;width:28px;height:28px;border-radius:50%;background:var(--nacht);color:#fff;font:700 15px/28px var(--fh);text-align:center}
 .stap3 b{display:block;font:700 17px var(--fh);color:var(--ink)}
+.mod{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:14px}
+.mod[hidden]{display:none}
+.mods{position:absolute;inset:0;background:rgba(10,18,44,.55)}
+.modb{position:relative;background:var(--paper);border-radius:12px;padding:20px;width:min(480px,100%);display:grid;gap:12px;max-height:94vh;overflow:auto}
+.modx{justify-self:end;border:0;background:none;font:600 16px var(--fh);color:var(--ink)}
+.modn{font:600 15px var(--fh);color:var(--muted);margin:0}
+.modb h2{font-size:25px;margin-bottom:12px}
+.modb .opt{width:100%;margin-bottom:8px}
+.modb .brform{background:none;border:0;padding:0}
 .twee2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .twee2 .btn{font-size:16px;padding:12px 10px;display:flex;align-items:center;justify-content:center;min-height:56px}
 .cta2{margin-top:16px}
-#brochure .brform{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px}
 @media(max-width:460px){.twee2{grid-template-columns:1fr}}
 .brkop{display:grid;grid-template-columns:96px 1fr;gap:15px;align-items:center}
 .brkop h2{font-size:24px}
@@ -309,7 +317,7 @@ footer p{max-width:80ch}
   <a href="https://boxspringfd.nl/"><img src="../salespagina/img/logo.png" alt="BoxspringFD" width="314" height="199"></a>
   <nav class="nav" aria-label="Hoofdmenu"><a href="https://boxspringfd.nl/">Home</a><a href="https://boxspringfd.nl/">Hoog laag boxsprings</a><a href="#kleuren">Kleuren</a><a href="#reviews">Reviews</a><a href="#showroom">Showroom</a></nav>
   <a class="tel" href="tel:0852127250">☎ <span>085 2127250</span></a>
-  <a class="cartbtn" href="#kopen" style="text-decoration:none">Offerte aanvragen</a>
+  <button class="cartbtn" type="button" data-open>Adviesgesprek plannen</button>
 </div></header>
 
 <div class="dealbar">
@@ -330,8 +338,8 @@ footer p{max-width:80ch}
   <div class="buy" id="kopen">
     <span class="bfbadge bfonly">Black Friday · t/m maandag 30 nov</span>
     <span class="eyebrow">Hoog laag boxspring Fermo</span>
-    <h1>Welk hoog-laag bed past het best bij u?</h1>
-    <p class="intro">Dat hangt af van u, uw slaapkamer en wie er meehelpt. Daarom komen wij bij u langs. We kijken samen wat past en u krijgt een offerte op maat.</p>
+    <h1>Onze adviseur komt bij u thuis</h1>
+    <p class="intro">Elke situatie is anders. Daarom kijken we bij u thuis wat u nodig heeft en waar u tegenaan loopt. Zo helpen we u de beste keuze te maken.</p>
     <div class="score"><span class="stars" aria-hidden="true">★★★★★</span> <b>4,8</b> uit 46 reviews op <a href="https://nl.trustpilot.com/review/www.boxspringfd.nl">Trustpilot</a></div>
     <ul class="redenen">
       <li><b>Lijkt een gewone boxspring</b>Geen zorgbed in uw slaapkamer</li>
@@ -341,19 +349,14 @@ footer p{max-width:80ch}
     </ul>
 
     <div class="brbox">
-      <h2>Vraag een offerte aan</h2>
+      <h2>Zo gaat het adviesgesprek</h2>
       <ol class="stap3">
-        <li><b>U vraagt aan</b>Wij bellen u om een moment af te spreken.</li>
-        <li><b>Wij komen langs</b>We kijken mee in uw slaapkamer en beantwoorden uw vragen.</li>
-        <li><b>U krijgt een offerte</b>Op maat, en zonder verplichtingen.</li>
+        <li><b>U plant een afspraak</b>Op een moment dat u uitkomt. Uw partner of kinderen kunnen erbij zijn.</li>
+        <li><b>De adviseur komt bij u thuis</b>We luisteren, kijken mee in uw slaapkamer en stellen de juiste vragen, bijvoorbeeld over allergie en wie u thuis helpt.</li>
+        <li><b>U krijgt eerlijk advies</b>Welk bed u het best helpt, met een prijs op maat. U zit nergens aan vast.</li>
       </ol>
-      <form class="brform" id="ofForm">
-        <label for="ofNaam">Uw naam</label><input id="ofNaam" name="naam" autocomplete="name" required>
-        <label for="ofTel">Uw telefoonnummer</label><input id="ofTel" name="telefoon" type="tel" autocomplete="tel" required>
-        <label for="ofPlaats">Uw woonplaats</label><input id="ofPlaats" name="plaats" autocomplete="address-level2" required>
-        <button class="btn" type="submit">Vraag een offerte aan</button>
-      </form>
-      <p class="brok" id="ofOk" hidden><b>Voorbeeld:</b> in de echte versie belt BoxspringFD de klant terug om langs te komen.</p>
+      <button class="btn" type="button" data-open>Plan een gratis adviesgesprek</button>
+      <a class="tekstlink" href="tel:0852127250">Liever bellen? 085 2127250</a>
       <div class="of"><span>Liever eerst iets anders?</span></div>
       <div class="twee2">
         <a class="btn ghost" href="#brochure">Download de brochure</a>
@@ -365,24 +368,26 @@ footer p{max-width:80ch}
 </div>
 
 <div class="chips"><div class="wrap">
-  <a href="#pastbest">Welke past het best?</a><a href="#werkt">Zo werkt het</a><a href="#vergelijk">Vergelijking</a><a href="#samen">Samen slapen</a><a href="#zelf">Zelfstandig</a><a href="#kleuren">Kleuren</a><a href="#maten">Maten en prijzen</a><a href="#reviews">Reviews</a><a href="#showroom">Showroom</a><a href="#vragen">Vragen</a>
+  <a href="#pastbest">Wat we bespreken</a><a href="#werkt">Zo werkt het</a><a href="#vergelijk">Vergelijking</a><a href="#samen">Samen slapen</a><a href="#zelf">Zelfstandig</a><a href="#kleuren">Kleuren</a><a href="#maten">Maten en prijzen</a><a href="#reviews">Reviews</a><a href="#showroom">Showroom</a><a href="#vragen">Vragen</a>
 </div></div>
 
 <section class="sec alt" id="pastbest"><div class="wrap">
-  <div class="head"><h2>Welke past het best?</h2><p>Geen twee situaties zijn hetzelfde. Hier kijken we samen met u naar, bij u thuis.</p></div>
+  <div class="head"><h2>Wat de adviseur met u doorneemt</h2><p>Elke situatie is anders. Daarom beginnen we met de juiste vragen. Dit komt onder andere aan bod.</p></div>
   <div class="tw"><table class="vs">
-    <thead><tr><th scope="col">Uw situatie</th><th scope="col">Waar we op letten</th></tr></thead>
+    <thead><tr><th scope="col">Uw situatie</th><th scope="col">Waar we samen naar kijken</th></tr></thead>
     <tbody>
       <tr><th scope="row">U slaapt samen</th><td>Breedte tot 200 cm, en links en rechts ieder een eigen matras</td></tr>
       <tr><th scope="row">U slaapt alleen</th><td>Breedte van 70 tot 120 cm, passend bij uw kamer</td></tr>
       <tr><th scope="row">Opstaan gaat moeilijk</th><td>De juiste hoogte en de sta-op-stand</td></tr>
       <tr><th scope="row">Iemand helpt u thuis</th><td>Werkhoogte, ruimte rond het bed en opties zoals wielen of een valhek</td></tr>
       <tr><th scope="row">U heeft last van uw rug</th><td>Matras, topper en de stand van rug en benen</td></tr>
+      <tr><th scope="row">U heeft allergie of astma</th><td>Matras, hoes en beddengoed die daarbij passen</td></tr>
+      <tr><th scope="row">Het bed moet makkelijk schoon blijven</th><td>Matrasbescherming, bekleding en wielen</td></tr>
       <tr><th scope="row">U wilt geen zorgbed</th><td>Stof, kleur en hoofdbord die bij uw slaapkamer passen</td></tr>
     </tbody>
   </table></div>
   <p class="note">Naast de Fermo hebben we ook andere hoog-laag modellen, zoals de Serre en de Lecce. We laten zien welke het beste bij u past.</p>
-  <div class="cta2"><a class="btn inl" href="#kopen">Vraag een offerte aan</a></div>
+  <div class="cta2"><button class="btn inl" type="button" data-open>Plan een gratis adviesgesprek</button></div>
 </div></section>
 
 <section class="sec" id="werkt"><div class="wrap">
@@ -438,7 +443,7 @@ footer p{max-width:80ch}
         <li><i>✓</i>Medium of stevig, per persoon</li>
         <li><i>✓</i>Wie hulp nodig heeft, krijgt die op werkhoogte</li>
       </ul>
-      <a class="btn inl" href="#kopen">Vraag een offerte aan</a>
+      <button class="btn inl" type="button" data-open>Plan een gratis adviesgesprek</button>
     </div>
   </div>
   <div class="split flip" style="margin-top:34px">
@@ -480,7 +485,7 @@ footer p{max-width:80ch}
 <section class="sec alt" id="maten"><div class="wrap">
   <div class="split" style="align-items:start">
     <div>
-      <div class="head"><h2>Maten en prijzen</h2><p>Dit zijn de bedprijzen bij 200 cm lengte, met de €899 korting al verrekend. De prijs op maat krijgt u in de offerte.</p></div>
+      <div class="head"><h2>Maten en prijzen</h2><p>Dit zijn de bedprijzen bij 200 cm lengte, met de €899 korting al verrekend. De prijs op maat krijgt u na het adviesgesprek.</p></div>
       <div class="tw"><table class="sizes-t">
         <thead><tr><th scope="col">Breedte</th><th scope="col">Voor wie</th><th scope="col">Prijs</th></tr></thead>
         <tbody>
@@ -543,12 +548,7 @@ footer p{max-width:80ch}
       </ul>
     </div>
     <div>
-      <form class="brform" id="brForm">
-        <label for="brNaam">Uw naam</label><input id="brNaam" name="naam" autocomplete="name" required>
-        <label for="brMail">Uw e-mailadres</label><input id="brMail" name="email" type="email" autocomplete="email" required>
-        <button class="btn ghost" type="submit">Download de brochure</button>
-      </form>
-      <p class="brok" id="brOk" hidden><b>Voorbeeld:</b> in de echte versie ontvangt de klant nu de brochure per e-mail.</p>
+      <button class="btn ghost" type="button" data-open="brochure">Download de brochure</button>
     </div>
   </div>
 </div></section>
@@ -557,19 +557,12 @@ footer p{max-width:80ch}
   <div class="split">
     <div class="copy">
       <h2>Kom langs in onze showroom</h2>
-      <p>Een bed koopt u voor jaren. Neem er rustig de tijd voor. Liever zelf proberen? Kom op afspraak langs in Deventer. Laat uw gegevens achter, dan bellen wij u om een moment af te spreken.</p>
+      <p>Een bed koopt u voor jaren. Neem er rustig de tijd voor. Liever zelf proberen? Kom op afspraak langs in Deventer. Wij bellen u om een moment af te spreken.</p>
       <ul>
         <li><i>✓</i>Showroom: Nijmegensestraat 7D, 7418 BZ Deventer</li>
                 <li><i>✓</i>Bel 085 2127250. U spreekt iemand die onze bedden kent.</li>
       </ul>
-      <form class="brform" id="afForm">
-        <label for="afNaam">Uw naam</label><input id="afNaam" name="naam" autocomplete="name" required>
-        <label for="afTel">Uw telefoonnummer</label><input id="afTel" name="telefoon" type="tel" autocomplete="tel" required>
-        <label for="afDeel">Wanneer komt het u het beste uit?</label>
-        <select id="afDeel" name="moment"><option>Doordeweeks ochtend</option><option>Doordeweeks middag</option><option>Maakt niet uit</option></select>
-        <button class="btn" type="submit">Plan mijn bezoek</button>
-      </form>
-      <p class="brok" id="afOk" hidden><b>Voorbeeld:</b> in de echte versie belt BoxspringFD de klant terug om een moment af te spreken.</p>
+      <button class="btn inl" type="button" data-open="showroom">Plan mijn bezoek</button>
     </div>
     <div class="media"><video data-src="../salespagina/vid/stel.mp4" poster="../salespagina/img/stel.jpg" muted loop playsinline aria-label="Stel van rond de zeventig zit samen rechtop in de Fermo"></video></div>
   </div>
@@ -597,17 +590,25 @@ footer p{max-width:80ch}
   <div class="split">
     <div class="copy">
       <h2>Wij komen bij u langs</h2>
-      <p>We kijken samen welk bed het best bij u past, en u krijgt een offerte op maat.</p>
-      <div class="cta"><a class="btn" href="#kopen">Vraag een offerte aan</a><a class="btn ghost" href="#brochure">Download de brochure</a><a class="btn ghost" href="#showroom">Kom langs in onze showroom</a></div>
+      <p>Onze adviseur neemt de tijd voor u en helpt u de beste keuze te maken. Daarna krijgt u een prijs op maat, zonder verplichtingen.</p>
+      <div class="cta"><button class="btn" type="button" data-open>Plan een gratis adviesgesprek</button><a class="btn ghost" href="#brochure">Download de brochure</a><a class="btn ghost" href="#showroom">Kom langs in onze showroom</a></div>
     </div>
     <div class="media"><img src="../salespagina/img/echt-hero.jpg" alt="De Fermo in een warme slaapkamer" loading="lazy"></div>
   </div>
 </div></section>
 </main>
+<div class="mod" id="mod" hidden>
+  <div class="mods" id="modS"></div>
+  <div class="modb" role="dialog" aria-modal="true" aria-label="Uw aanvraag">
+    <button class="modx" type="button" id="modX">Sluiten ✕</button>
+    <p class="modn" id="modN"></p>
+    <div id="modI"></div>
+  </div>
+</div>
 
 <footer><div class="wrap"><p>Preview van een salespagina voor BoxspringFD, Nijmegensestraat 7D, 7418 BZ Deventer. Prijzen in euro's inclusief btw, bron: boxspringfd.nl. Sfeerbeelden tonen geen echte klanten. Reviews komen van Trustpilot.</p></div></footer>
 
-<div class="mobbar"><a class="btn" href="#kopen" id="mobBtn">Vraag een offerte aan</a></div>
+<div class="mobbar"><button class="btn" type="button" data-open id="mobBtn">Plan een gratis adviesgesprek</button></div>
 
 <script>
 const BF = document.body.dataset.mode === 'bf';
@@ -680,8 +681,32 @@ function setWho(w){ S.who = w; S.w = WHO[w].def; S.adds = {}; fixLen(); render()
 document.querySelectorAll('[data-who]').forEach(b => b.onclick = () => setWho(b.dataset.who));
 document.querySelectorAll('[data-who-link]').forEach(a => a.addEventListener('click', () => setWho(a.dataset.whoLink)));
 
-/* formulieren: in de preview alleen een melding, er wordt niets verstuurd */
-[['ofForm','ofOk'],['brForm','brOk'],['afForm','afOk']].forEach(([f, o]) => document.getElementById(f).addEventListener('submit', e => { e.preventDefault(); e.target.hidden = true; document.getElementById(o).hidden = false; }));
+
+/* gegevens pas na de knop, één vraag per scherm; in de preview wordt niets verstuurd */
+const mod = document.getElementById('mod'), modI = document.getElementById('modI'), modN = document.getElementById('modN');
+const NAAM = ['Uw naam','text','name'], TEL = ['Uw telefoonnummer','tel','tel'], PLAATS = ['Uw woonplaats','text','address-level2'];
+const FLOW = {
+  advies:{q:[{v:'Voor wie is het bed?',o:['Voor mijzelf','Voor ons samen','Voor mijn vader of moeder','Voor iemand anders']},{v:'Waar loopt u vooral tegenaan?',o:['Opstaan gaat moeilijk','Last van rug of gewrichten','Iemand helpt mij thuis','Iets anders']},{v:'Wanneer komt het u het beste uit?',o:['Doordeweeks ochtend','Doordeweeks middag','Maakt niet uit']}],k:'Waar mag de adviseur u bellen?',c:[NAAM,TEL,PLAATS],b:'Plan mijn adviesgesprek',ok:'in de echte versie belt BoxspringFD de klant om het bezoek af te spreken.'},
+  brochure:{q:[],k:'Waar sturen we de brochure heen?',c:[NAAM,['Uw e-mailadres','email','email']],b:'Stuur mij de brochure',ok:'in de echte versie ontvangt de klant nu de brochure per e-mail.'},
+  showroom:{q:[{v:'Wanneer komt het u het beste uit?',o:['Doordeweeks ochtend','Doordeweeks middag','Maakt niet uit']}],k:'Waar mogen wij u bellen?',c:[NAAM,TEL],b:'Plan mijn bezoek',ok:'in de echte versie belt BoxspringFD de klant terug om een moment af te spreken.'},
+};
+let fl = FLOW.advies, vs = 0;
+function vraag(){
+  const q = fl.q;
+  modN.textContent = q.length && vs <= q.length ? `Stap ${vs + 1} van ${q.length + 1}` : '';
+  if (vs < q.length) modI.innerHTML = `<h2>${q[vs].v}</h2>` + q[vs].o.map(x => `<button type="button" class="opt" data-next>${x}</button>`).join('');
+  else if (vs === q.length) modI.innerHTML = `<h2>${fl.k}</h2><form class="brform" id="mStap">` + fl.c.map((c, i) => `<label for="mV${i}">${c[0]}</label><input id="mV${i}" type="${c[1]}" autocomplete="${c[2]}" required>`).join('') + `<button class="btn" type="submit">${fl.b}</button></form>`;
+  else modI.innerHTML = `<h2>Bedankt</h2><p class="brok"><b>Voorbeeld:</b> ${fl.ok}</p>`;
+}
+document.addEventListener('click', e => {
+  const o = e.target.closest('[data-open]');
+  if (o) { fl = FLOW[o.dataset.open || 'advies']; vs = 0; vraag(); mod.hidden = false; }
+  if (e.target.closest('[data-next]')) { vs++; vraag(); }
+});
+modI.addEventListener('submit', e => { e.preventDefault(); vs++; vraag(); });
+document.getElementById('modX').onclick = () => { mod.hidden = true; };
+document.getElementById('modS').onclick = () => { mod.hidden = true; };
+addEventListener('keydown', e => { if (e.key === 'Escape') mod.hidden = true; });
 
 /* alle keuzes via één luisteraar */
 document.addEventListener('click', e => {
@@ -729,8 +754,8 @@ renderThumbs(); render(); showSlide(0);
 /* Post-its: korte uitleg in simpele taal */
 const PI = [
   ['.gallery', '<b>Meteen duidelijk</b>Eerst het bed, dan de video. In 1 seconde snap je het.', 'right:8px;top:8px'],
-  ['.brbox', '<b>Dienst voorop</b>Bij dit bedrag verkoopt het gesprek aan huis, niet de knop.', 'right:0;top:-58px'],
-  ['#pastbest .head', '<b>Welke past het best</b>Laat zien dat je meedenkt voordat je iets verkoopt.', 'right:0;top:-14px'],
+  ['.brbox', '<b>Adviseur voorop</b>Elke situatie is anders. Gegevens vragen we pas na de knop.', 'right:0;top:-58px'],
+  ['#pastbest .head', '<b>Eerst de juiste vragen</b>Laat zien dat je meedenkt voordat je iets verkoopt.', 'right:0;top:-14px'],
   ['.of', '<b>Tweede keuze</b>Nog niet klaar voor een bezoek? Brochure of showroom.', 'right:0;top:-74px'],
   ['#vergelijk .head', '<b>Waarom dit bed</b>Naast een normaal bed en een zorgbed zie je meteen wat de Fermo beide biedt.', 'right:0;top:-14px'],
   ['#samen .copy', '<b>Grootste groep</b>Stellen zijn de hoofdkopers, dus eigen blok.', 'right:0;top:-44px'],
