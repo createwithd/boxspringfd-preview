@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merkfundament Fermo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Eén vaste wereld: het palet van de Fermo zelf. Overzicht in drie delen, palet eerst in echte toepassing. */
+:root {
+  color-scheme: light;
+  --nachtblauw: #112151;
+  --diepblauw: #003C61;
+  --koper: #A8480C;
+  --zand: #C2AC94;
+  --lichtzand: #E6DCCB;
+  --linnen: #F4F3ED;
+  --wit: #FFFFFF;
+  --leisteen: #44506A;
+  --groen: #1F8A5B;
+  --groenvlak: #F1FAF5;
+  --groenrij: #E6F5EC;
+  --groenpil: #1F7A5C;
+  --kop: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --tekst: "Noto Sans", "Segoe UI", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--wit); color: var(--nachtblauw); font: 400 17px/1.6 var(--tekst); }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+h1, h2, h3 { font-family: var(--kop); line-height: 1.2; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(32px, 5vw, 46px); font-weight: 700; }
+h2 { font-size: clamp(25px, 3.4vw, 32px); font-weight: 700; }
+h3 { font-size: 19px; font-weight: 700; }
+p { margin: 0; }
+.kopblok { background: var(--nachtblauw); color: var(--linnen); padding: 44px 0 40px; }
+.kopblok .wrap { display: grid; gap: 14px; }
+.kopblok .inleiding { max-width: 62ch; color: var(--lichtzand); }
+.feiten { display: flex; flex-wrap: wrap; gap: 8px 24px; font-family: var(--kop); font-weight: 600; font-size: 15px; color: var(--zand); }
+section { padding: 44px 0; }
+section + section { border-top: 1px solid var(--zand); }
+.sectiekop { display: grid; gap: 8px; margin-bottom: 24px; max-width: 68ch; }
+.sectiekop p { color: var(--leisteen); }
+
+.palet { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.staal { background: var(--wit); border: 1px solid var(--lichtzand); border-radius: 6px; overflow: hidden; display: grid; grid-template-rows: 96px auto; }
+.staal div:last-child { padding: 10px 12px 12px; display: grid; gap: 1px; }
+.staal b { font-family: var(--kop); font-size: 16px; }
+.staal code { font-size: 14px; color: var(--leisteen); font-variant-numeric: tabular-nums; }
+.staal span { font-size: 14px; color: var(--leisteen); line-height: 1.35; }
+.staal .nieuw { color: var(--koper); font-weight: 600; }
+
+.voorbeeld { margin-top: 28px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; background: var(--wit); border: 1px solid var(--zand); border-radius: 6px; overflow: hidden; }
+.bedbeeld { background: var(--lichtzand); position: relative; min-height: 300px; display: flex; align-items: flex-end; justify-content: center; padding: 26px; }
+.bedbeeld svg { width: 100%; max-width: 420px; height: auto; display: block; }
+.label { position: absolute; top: 14px; left: 14px; background: var(--koper); color: var(--wit); font: 700 15px var(--kop); padding: 5px 10px; border-radius: 3px; }
+.koop { padding: 24px; display: grid; gap: 12px; align-content: start; }
+.koop .prijs { font: 700 30px var(--kop); }
+.koop .prijs s { font-size: 17px; font-weight: 500; color: var(--leisteen); margin-right: 8px; }
+.knop { display: block; text-align: center; font: 600 18px var(--kop); padding: 14px 16px; border-radius: 4px; }
+.knop.a { background: var(--koper); color: var(--wit); }
+.knop.b { border: 2px solid var(--nachtblauw); }
+.koop ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 16px; color: var(--leisteen); }
+
+.tabelrand { overflow-x: auto; background: var(--wit); border: 1px solid var(--lichtzand); border-radius: 6px; }
+table { border-collapse: collapse; width: 100%; font-size: 16px; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--lichtzand); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+th { font: 600 14px var(--kop); color: var(--leisteen); white-space: nowrap; }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+.fout { color: var(--koper); font-weight: 600; }
+.contrast-m { width: 44px; height: 28px; display: inline-grid; place-items: center; font: 700 15px var(--kop); border-radius: 3px; border: 1px solid var(--lichtzand); }
+
+.avatars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.avatar { background: var(--wit); border: 1px solid var(--lichtzand); border-radius: 6px; padding: 14px 16px; display: grid; gap: 6px; align-content: start; }
+.avatar.top { border-color: var(--nachtblauw); }
+.avatar .pil { justify-self: start; background: var(--nachtblauw); color: var(--linnen); font: 600 14px var(--kop); padding: 2px 9px; border-radius: 3px; }
+.avatar .regel { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.avatar .score { font: 700 16px var(--kop); white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--leisteen); }
+.avatar p { font-size: 16px; line-height: 1.45; }
+.avatar .hook { font-family: var(--kop); font-weight: 600; color: var(--diepblauw); }
+.bewijs { font-size: 14px; color: var(--leisteen); }
+
+.tabelrand tr.groen { background: var(--groenrij); }
+.tabelrand tr.rood { background: #FBE9E9; }
+.tot { font-weight: 700; }
+.advies { margin-top: 14px; max-width: 72ch; }
+.avs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.av { background: var(--wit); border: 1px solid var(--lichtzand); border-radius: 6px; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.av.groen { border: 2px solid var(--groen); background: var(--groenvlak); }
+.av.rood { border: 2px solid #C43D3D; background: #FDF3F3; }
+.waarom { color: #9E2B2B; }
+.av header { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.av h3 { flex: 1 1 200px; font-size: 21px; }
+.no { font: 700 24px var(--kop); color: var(--koper); min-width: 22px; }
+.chip { font: 600 13px var(--kop); padding: 2px 8px; border-radius: 3px; background: var(--wit); border: 1px solid var(--zand); white-space: nowrap; }
+.av .pil { font: 600 13px var(--kop); padding: 3px 8px; border-radius: 3px; background: var(--groenpil); color: var(--wit); white-space: nowrap; }
+.sc { font: 700 17px var(--kop); margin-left: auto; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.kort { font-size: 17px; }
+blockquote { margin: 0; padding: 10px 14px; background: var(--linnen); font: 600 20px/1.25 var(--kop); color: var(--diepblauw); }
+.av blockquote { background: var(--wit); }
+dl { display: grid; grid-template-columns: 112px 1fr; gap: 6px 12px; margin: 0; font-size: 16px; line-height: 1.45; }
+dt { font-weight: 600; }
+dd { margin: 0; }
+@media (max-width: 760px) { .avs { grid-template-columns: 1fr; } }
+@media (max-width: 460px) { dl { grid-template-columns: 1fr; gap: 0; } dd { margin-bottom: 8px; } }
+
+.twee { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.vak { background: var(--wit); border: 1px solid var(--lichtzand); border-radius: 6px; padding: 16px; display: grid; gap: 8px; align-content: start; }
+.vak ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 16px; }
+.paar { display: grid; gap: 8px; }
+.voor { color: var(--leisteen); font-size: 16px; }
+.na { font-family: var(--kop); font-weight: 600; font-size: 19px; color: var(--nachtblauw); line-height: 1.3; }
+.paar + .paar { border-top: 1px solid var(--lichtzand); padding-top: 12px; }
+
+.waarschuwing { background: var(--diepblauw); color: var(--linnen); }
+.waarschuwing .sectiekop p { color: var(--lichtzand); }
+.waarschuwing ol { margin: 0; padding-left: 22px; display: grid; gap: 8px; max-width: 72ch; }
+.waarschuwing b { color: var(--wit); }
+
+@media (max-width: 760px) {
+  .palet { grid-template-columns: repeat(2, 1fr); }
+  .voorbeeld, .avatars, .twee { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="kopblok">
+  <div class="wrap">
+    <h1>Merkfundament hoog laag boxspring Fermo</h1>
+    <p class="inleiding">Negen avatars, een kleurenpalet en een tone of voice voor de productpagina van BoxspringFD. Gebaseerd op reviews, concurrenten en zoekdata. De orderdata van de webshop ontbreekt nog, dus de scores zijn een inschatting.</p>
+    <div class="feiten"><span>€3.147 tot €5.137</span><span>4,8 op Trustpilot, 46 reviews</span><span>Gemaakt in Deventer</span><span>30 oktober 2026</span></div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sectiekop">
+      <h2>Kleurenpalet</h2>
+      <p>Blauw, zand en linnen komen van de eigen site en blijven. Eén wijziging: het oranje wordt koper, omdat witte tekst op oranje te slecht leesbaar is.</p>
+    </div>
+    <div class="palet">
+      <div class="staal"><div style="background:#112151"></div><div><b>Nachtblauw</b><code>#112151</code><span>Koppen, tekst, menu</span></div></div>
+      <div class="staal"><div style="background:#003C61"></div><div><b>Diepblauw</b><code>#003C61</code><span>Donkere vlakken, footer</span></div></div>
+      <div class="staal"><div style="background:#A8480C"></div><div><b>Koper</b><code>#A8480C</code><span class="nieuw">Nieuw, alleen de hoofdknop</span></div></div>
+      <div class="staal"><div style="background:#C2AC94"></div><div><b>Zand</b><code>#C2AC94</code><span>Vlakken en lijnen, nooit tekst</span></div></div>
+      <div class="staal"><div style="background:#E6DCCB"></div><div><b>Licht zand</b><code>#E6DCCB</code><span class="nieuw">Nieuw, blokken en kaarten</span></div></div>
+      <div class="staal"><div style="background:#F4F3ED"></div><div><b>Linnen</b><code>#F4F3ED</code><span>Pagina-achtergrond</span></div></div>
+      <div class="staal"><div style="background:#FFFFFF"></div><div><b>Wit</b><code>#FFFFFF</code><span>Kaarten, configurator</span></div></div>
+      <div class="staal"><div style="background:#44506A"></div><div><b>Leisteen</b><code>#44506A</code><span class="nieuw">Nieuw, kleine tekst</span></div></div>
+    </div>
+
+    <div class="voorbeeld" aria-label="Voorbeeld van het palet op een productpagina">
+      <div class="bedbeeld">
+        <span class="label">-€899</span>
+        <svg viewBox="0 0 420 210" role="img" aria-label="Schets van een boxspring met hoofdbord in hoge stand">
+          <rect x="26" y="30" width="20" height="150" rx="4" fill="#44506A"/>
+          <rect x="46" y="88" width="340" height="44" rx="5" fill="#44506A"/>
+          <rect x="46" y="62" width="340" height="28" rx="7" fill="#FFFFFF"/>
+          <rect x="56" y="48" width="80" height="20" rx="8" fill="#F4F3ED"/>
+          <rect x="196" y="62" width="190" height="28" rx="6" fill="#C2AC94"/>
+          <path d="M130 136 L290 192 M290 136 L130 192" stroke="#112151" stroke-width="7" stroke-linecap="round"/>
+          <rect x="96" y="190" width="228" height="8" rx="3" fill="#112151"/>
+          <path d="M398 176 V92 M390 104 L398 92 L406 104" fill="none" stroke="#A8480C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="koop">
+        <h3>Hoog laag boxspring Fermo</h3>
+        <p>Het lijkt een gewone boxspring. Hij gaat elektrisch omhoog, tot de hoogte waarop u prettig opstaat.</p>
+        <p class="prijs"><s>€4.046</s>€3.147</p>
+        <span class="knop a">Stel uw Fermo samen</span>
+        <span class="knop b">Kom kijken in Deventer</span>
+        <ul><li>✓ 15 jaar garantie op frame en bodem</li><li>✓ 2 jaar garantie op de motoren</li><li>✓ Verwachte levertijd 10 tot 15 werkdagen</li></ul>
+      </div>
+    </div>
+
+    <div class="sectiekop" style="margin-top:32px;margin-bottom:12px"><h3>Leesbaarheid getest</h3></div>
+    <div class="tabelrand">
+      <table>
+        <thead><tr><th>Voorbeeld</th><th>Combinatie</th><th class="n">Contrast</th><th>Oordeel</th></tr></thead>
+        <tbody>
+          <tr><td><span class="contrast-m" style="background:#F4F3ED;color:#112151">Aa</span></td><td>Nachtblauw op linnen</td><td class="n">13,9:1</td><td>Uitstekend</td></tr>
+          <tr><td><span class="contrast-m" style="background:#F4F3ED;color:#44506A">Aa</span></td><td>Leisteen op linnen</td><td class="n">7,3:1</td><td>Goed</td></tr>
+          <tr><td><span class="contrast-m" style="background:#A8480C;color:#FFFFFF">Aa</span></td><td>Wit op koper (nieuw)</td><td class="n">5,8:1</td><td>Goed voor knoppen</td></tr>
+          <tr><td><span class="contrast-m" style="background:#FE6800;color:#FFFFFF">Aa</span></td><td>Wit op huidig oranje</td><td class="n">2,9:1</td><td class="fout">Onvoldoende</td></tr>
+          <tr><td><span class="contrast-m" style="background:#F4F3ED;color:#C2AC94">Aa</span></td><td>Zand op linnen</td><td class="n">2,0:1</td><td class="fout">Nooit voor tekst</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sectiekop">
+      <h2>Scorecard</h2>
+      <p>Groen is de groep waar we op mikken, rood blijft staan maar krijgt geen focus. De orderdata van de webshop ontbreekt nog, dus de scores zijn een inschatting.</p>
+    </div>
+    <div class="tabelrand">
+      <table>
+        <thead><tr><th>#</th><th>Avatar</th><th class="n">Pijn</th><th class="n">Koopbereid</th><th class="n">Schaal</th><th class="n">Weinig uitleg</th><th class="n">Totaal /20</th></tr></thead>
+        <tbody>
+<tr class="groen"><td>1</td><th scope="row">Het stel dat samen in één bed wil blijven slapen</th><td class="n">5</td><td class="n">5</td><td class="n">4</td><td class="n">3</td><td class="n tot">17</td></tr>
+<tr class="groen"><td>2</td><th scope="row">Wie geen ziekenhuisbed in de slaapkamer wil</th><td class="n">4</td><td class="n">5</td><td class="n">3</td><td class="n">5</td><td class="n tot">17</td></tr>
+<tr class="groen"><td>5</td><th scope="row">Wie last heeft van rug of gewrichten</th><td class="n">4</td><td class="n">4</td><td class="n">4</td><td class="n">3</td><td class="n tot">15</td></tr>
+<tr class="groen"><td>7</td><th scope="row">De alleenstaande die zelfstandig wil blijven</th><td class="n">4</td><td class="n">3</td><td class="n">4</td><td class="n">3</td><td class="n tot">14</td></tr>
+<tr class="rood"><td>4</td><th scope="row">De vergelijker die maanden uitzoekt</th><td class="n">3</td><td class="n">5</td><td class="n">4</td><td class="n">3</td><td class="n tot">15</td></tr>
+<tr class="rood"><td>6</td><th scope="row">De zoon of dochter die het regelt voor vader of moeder</th><td class="n">5</td><td class="n">3</td><td class="n">4</td><td class="n">2</td><td class="n tot">14</td></tr>
+<tr class="rood"><td>8</td><th scope="row">Het stel dat alvast vooruitkoopt</th><td class="n">2</td><td class="n">4</td><td class="n">3</td><td class="n">3</td><td class="n tot">12</td></tr>
+<tr class="rood"><td>9</td><th scope="row">Wie nu een leenbed of huurbed heeft</th><td class="n">4</td><td class="n">3</td><td class="n">2</td><td class="n">3</td><td class="n tot">12</td></tr>
+<tr class="rood"><td>10</td><th scope="row">Wie het bed makkelijker wil opmaken</th><td class="n">2</td><td class="n">3</td><td class="n">2</td><td class="n">4</td><td class="n tot">11</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="advies"><b>Advies:</b> kop en foto voor avatar 2, bewijs en maatkeuze voor avatar 1, met daarin een eigen blok voor wie thuis zorgt.</p>
+    <p class="advies"><b>Vergelijken:</b> de vergelijker staat op rood, omdat we daar niet op mikken. Een vergelijking blijft wel een sterk middel in ads en salespagina's, bijvoorbeeld tegenover een zorgbed of met de vragen die u moet stellen voordat u koopt.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sectiekop">
+      <h2>De 9 avatars</h2>
+      <p>Groen zijn de vier gekozen groepen, rood de overige vijf. Het label zegt hoe hard het bewijs is. Observed staat letterlijk in bronnen, Likely volgt uit meerdere signalen, Strategic Hypothesis moet nog getest worden. Leeftijden zijn een inschatting.</p>
+    </div>
+    <div class="avs">
+<article class="av groen">
+<header><span class="no">1</span><h3>Het stel dat samen in één bed wil blijven slapen</h3><span class="chip">Observed</span><span class="sc">17/20</span></header>
+<p class="kort">Eén van de twee krijgt moeite met in en uit bed, soms zorgt de ander al elke dag. Ze willen samen en thuis blijven.</p>
+<blockquote>Samen blijven slapen, ook als een van u moeilijker uit bed komt.</blockquote>
+<blockquote>U zorgt elke dag voor uw man. Dit bed gaat omhoog, zodat u minder hoeft te bukken.</blockquote>
+<dl>
+<dt>Wie</dt><dd>Getrouwd of lang samen, rond 60 tot 85 jaar. Eén van de twee heeft klachten, de ander helpt soms al dagelijks.</dd>
+<dt>Waarom nu</dt><dd>De klachten worden erger, er komt thuiszorg, of na een breuk of operatie moet het snel.</dd>
+<dt>Bang voor</dt><dd>Apart moeten slapen. De zorg niet volhouden. Dat de ander weg moet.</dd>
+<dt>Wil eigenlijk</dt><dd>Bij elkaar blijven, thuis.</dd>
+<dt>Belofte</dt><dd>U blijft samen slapen, en als er geholpen wordt gaat het bed naar werkhoogte.</dd>
+<dt>Kanaal</dt><dd>Google (hoog laag bed 2 persoons), Facebook, telefoon, advies aan huis, brochure. Ergotherapeuten en wijkverpleging als doorverwijzers</dd>
+<dt>Bewijs</dt><dd>Observed: 8 van de 18 Bedder-reviews gaan over stellen, plus San Willemsen en Roelof Elsinga bij BoxspringFD. Pascalle Commu, Monique Lenoire en het RIVM-praktijkverhaal voor de zorgkant. Of de helften apart verstellen moet de eigenaar nog bevestigen.</dd>
+</dl></article>
+<article class="av groen">
+<header><span class="no">2</span><h3>Wie geen ziekenhuisbed in de slaapkamer wil</h3><span class="chip">Likely</span><span class="sc">17/20</span></header>
+<p class="kort">Heeft een hoog-laag bed nodig of bijna nodig, maar wil de uitstraling van een zorgbed niet.</p>
+<blockquote>Het lijkt een gewone boxspring. Hij gaat elektrisch omhoog.</blockquote>
+<dl>
+<dt>Wie</dt><dd>Alleenstaand of samen, rond 60 tot 85 jaar.</dd>
+<dt>Waarom nu</dt><dd>Heeft een zorgbed gezien bij een ouder of in het verpleeghuis, en wil dat niet.</dd>
+<dt>Bang voor</dt><dd>Dat de slaapkamer eruitziet alsof er iemand ziek is, en dat bezoek dat ziet.</dd>
+<dt>Wil eigenlijk</dt><dd>Gewoon zichzelf blijven in het eigen huis.</dd>
+<dt>Belofte</dt><dd>Een hoog-laag bed dat eruitziet als uw eigen bed.</dd>
+<dt>Kanaal</dt><dd>Facebook met een sfeerfoto, Google (hoog laag boxspring)</dd>
+<dt>Bewijs</dt><dd>Likely: staat op de eigen homepage, bij Woon Sfeervol en Zorgbedplus. Dit zijn verkopers, dus eerst toetsen. Eric Baetens noemt het bed "degelijk en mooi".</dd>
+</dl></article>
+<article class="av groen">
+<header><span class="no">5</span><h3>Wie last heeft van rug of gewrichten</h3><span class="chip">Likely</span><span class="sc">15/20</span></header>
+<p class="kort">Zoekt geen zorgbed maar een beter bed, omdat de ochtenden zwaarder worden.</p>
+<blockquote>Is opstaan het zwaarste moment van uw dag? Zet uw bed op uw eigen hoogte.</blockquote>
+<dl>
+<dt>Wie</dt><dd>Rond 50 tot 75 jaar, werkt soms nog.</dd>
+<dt>Waarom nu</dt><dd>Opstaan kost steeds meer moeite.</dd>
+<dt>Bang voor</dt><dd>Dat het erger wordt. Een duur bed kopen dat niet helpt.</dd>
+<dt>Wil eigenlijk</dt><dd>Weer gewoon opstaan.</dd>
+<dt>Belofte</dt><dd>Opstaan op de hoogte die bij u past.</dd>
+<dt>Kanaal</dt><dd>Google (bed voor rugklachten), blog over rugklachten, Facebook</dd>
+<dt>Bewijs</dt><dd>Likely: Mark kocht een bed op maat vanwege rugklachten, de site staat op positie 2 voor "beste bedbodem bij rugklachten". Geen medische belofte doen.</dd>
+</dl></article>
+<article class="av groen">
+<header><span class="no">7</span><h3>De alleenstaande die zelfstandig wil blijven</h3><span class="chip">Likely</span><span class="sc">14/20</span></header>
+<p class="kort">Woont alleen en wil niemand nodig hebben om in en uit bed te komen.</p>
+<blockquote>Op uw eigen tijd uit bed, zonder iemand te hoeven roepen.</blockquote>
+<dl>
+<dt>Wie</dt><dd>Weduwe, weduwnaar of alleenstaand, rond 70 tot 90 jaar, vaak in een kleinere woning.</dd>
+<dt>Waarom nu</dt><dd>In en uit bed gaat niet meer als vroeger, en er is niemand om te helpen.</dd>
+<dt>Bang voor</dt><dd>Hulp nodig hebben en uit huis moeten.</dd>
+<dt>Wil eigenlijk</dt><dd>De regie houden.</dd>
+<dt>Belofte</dt><dd>Zelfstandig in en uit bed, op uw eigen tijd.</dd>
+<dt>Kanaal</dt><dd>Google (hoog laag bed 1 persoons, 120x200), Facebook, brochure, telefoon</dd>
+<dt>Bewijs</dt><dd>Likely: homepage noemt "zelfstandig", Aty Lont-Besseling en Annie Hazenhoek-Wiersema (Bedder), 250 zoekopdrachten per maand op eenpersoons.</dd>
+</dl></article>
+<article class="av rood">
+<header><span class="no">4</span><h3>De vergelijker die maanden uitzoekt</h3><span class="chip">Observed</span><span class="sc">15/20</span></header>
+<p class="kort">Leest alles, belt en koopt pas als het klopt.</p><p class="waarom"><b>Waarom rood:</b> Geen groep om op te mikken. Vergelijken gebruiken we als middel in ads en salespagina's.</p>
+<blockquote>Hoog laag boxsprings vergelijken? Dit zijn de zeven dingen die u moet navragen.</blockquote>
+<dl>
+<dt>Wie</dt><dd>Rond 55 tot 75 jaar, vaak de partner zonder klachten of de zoon of dochter.</dd>
+<dt>Waarom nu</dt><dd>De vraag speelt al een tijd. De koop volgt als alles klopt.</dd>
+<dt>Bang voor</dt><dd>Te veel betalen. Later spijt krijgen.</dd>
+<dt>Wil eigenlijk</dt><dd>Weten dat dit de juiste keuze was.</dd>
+<dt>Belofte</dt><dd>U ziet vooraf precies wat u krijgt en wat het kost.</dd>
+<dt>Kanaal</dt><dd>Google (wat kost een hoog laag bed), vergelijkingsgids, brochure, showroom</dd>
+<dt>Bewijs</dt><dd>Observed: San Willemsen zocht maanden, Roelof Elsinga las reviews en kwam naar de showroom, Nicoline de Gier en T. Wijnsma zochten breed.</dd>
+</dl></article>
+<article class="av rood">
+<header><span class="no">6</span><h3>De zoon of dochter die het regelt voor vader of moeder</h3><span class="chip">Observed</span><span class="sc">14/20</span></header>
+<p class="kort">Doet het zoekwerk en het bellen, vaak na een val, opname of zorgelijk gesprek.</p><p class="waarom"><b>Waarom rood:</b> Veel uitleg nodig, en de zoeker is vaak niet degene die betaalt.</p>
+<blockquote>Uw moeder wil thuis blijven. Dit bed maakt dat makkelijker.</blockquote>
+<dl>
+<dt>Wie</dt><dd>Rond 45 tot 65 jaar, woont vaak niet naast de ouders.</dd>
+<dt>Waarom nu</dt><dd>Een val, een opname of een zorgelijk gesprek.</dd>
+<dt>Bang voor</dt><dd>Dat er iets misgaat. Dat de ouders niet thuis kunnen blijven.</dd>
+<dt>Wil eigenlijk</dt><dd>Rust dat het goed geregeld is.</dd>
+<dt>Belofte</dt><dd>Wij komen langs, regelen alles en leggen het uit aan uw ouders.</dd>
+<dt>Kanaal</dt><dd>Google, Facebook, advies aan huis. De koper is niet altijd de betaler</dd>
+<dt>Bewijs</dt><dd>Observed: Nijsingh Henri, Arianne Hufener, Caroline (Bedder), Laura Berends (Zorgbedplus). Bij BoxspringFD zelf alleen Smile Cleaning service, voor een hulpbehoevende kennis.</dd>
+</dl></article>
+<article class="av rood">
+<header><span class="no">8</span><h3>Het stel dat alvast vooruitkoopt</h3><span class="chip">Likely</span><span class="sc">12/20</span></header>
+<p class="kort">Nog fit, maar het oude bed is aan vervanging toe en ze denken vooruit.</p><p class="waarom"><b>Waarom rood:</b> Nog geen haast, deze groep kan jaren wachten.</p>
+<blockquote>Nu een mooi bed. Straks precies wat u nodig heeft.</blockquote>
+<dl>
+<dt>Wie</dt><dd>Stel van rond 55 tot 70 jaar.</dd>
+<dt>Waarom nu</dt><dd>Een verhuizing, pensioen of de eerste klachten.</dd>
+<dt>Bang voor</dt><dd>Over vijf jaar opnieuw moeten kopen.</dd>
+<dt>Wil eigenlijk</dt><dd>Dit is goed geregeld voor de komende jaren.</dd>
+<dt>Belofte</dt><dd>Eén bed dat nu mooi is en later mee kan.</dd>
+<dt>Kanaal</dt><dd>Facebook, showroom, brochure</dd>
+<dt>Bewijs</dt><dd>Likely: Jan (Bedder) kocht "met het oog op de toekomst", ook Woon Sfeervol en Langer Thuis in Huis noemen dit. De 15 jaar garantie past hier sterk bij.</dd>
+</dl></article>
+<article class="av rood">
+<header><span class="no">9</span><h3>Wie nu een leenbed of huurbed heeft</h3><span class="chip">Strategic Hypothesis</span><span class="sc">12/20</span></header>
+<p class="kort">Kreeg een tijdelijk bed na een operatie, breuk of ziekte, en dat blijkt niet tijdelijk.</p><p class="waarom"><b>Waarom rood:</b> Nog niet bewezen, er is maar één review over.</p>
+<blockquote>Moet uw leenbed terug? Een eigen hoog-laag bed staat er naar verwachting binnen 15 werkdagen.</blockquote>
+<dl>
+<dt>Wie</dt><dd>Breed qua leeftijd. Heeft een bed via de verzekeraar of thuiszorgwinkel.</dd>
+<dt>Waarom nu</dt><dd>De leentermijn loopt af of de klachten blijken blijvend. Vilans noemt tot 26 weken gratis lenen.</dd>
+<dt>Bang voor</dt><dd>Het bed weer kwijtraken. Een lelijk bed blijven houden.</dd>
+<dt>Wil eigenlijk</dt><dd>Weer een eigen bed.</dd>
+<dt>Belofte</dt><dd>Van leenbed naar uw eigen bed, in naar verwachting 10 tot 15 werkdagen.</dd>
+<dt>Kanaal</dt><dd>Google (hoog laag bed lenen, huren, vergoeding), thuiszorgwinkels als doorverwijzer</dd>
+<dt>Bewijs</dt><dd>Strategic Hypothesis: alleen Pascalle Commu heeft een leenbed in afwachting van een definitief bed. Wie kort herstelt is met huren beter af, en dat zeggen we eerlijk.</dd>
+</dl></article>
+<article class="av rood">
+<header><span class="no">10</span><h3>Wie het bed makkelijker wil opmaken</h3><span class="chip">Observed</span><span class="sc">11/20</span></header>
+<p class="kort">Bukken bij het opmaken gaat niet meer, en het huishouden wil zij of hij zelf blijven doen.</p><p class="waarom"><b>Waarom rood:</b> Vooral een extra voordeel, zelden de enige reden om te kopen.</p>
+<blockquote>Het bed opmaken zonder te bukken.</blockquote>
+<dl>
+<dt>Wie</dt><dd>Rond 60 tot 80 jaar, vaak gezond en doet het huishouden zelf.</dd>
+<dt>Waarom nu</dt><dd>Bukken gaat lastiger en de dekens moeten toch verschoond.</dd>
+<dt>Bang voor</dt><dd>Het huishouden uit handen moeten geven.</dd>
+<dt>Wil eigenlijk</dt><dd>Het zelf blijven doen.</dd>
+<dt>Belofte</dt><dd>Op uw rughoogte opmaken, elke week.</dd>
+<dt>Kanaal</dt><dd>Facebook als extra argument, video van het bed dat omhoog gaat</dd>
+<dt>Bewijs</dt><dd>Observed: G. de Heij (BoxspringFD), Herman Willems en een tweede Bedder-review, Beter Bed. Werkt vooral als extra voordeel, zelden als enige reden.</dd>
+</dl></article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sectiekop">
+      <h2>Tone of voice</h2>
+      <p>We praten als de ervaren vakman uit de showroom: rustig, eerlijk en concreet. Altijd met u. Het blok "Waar u bij ons op kunt rekenen" op de pagina is al de juiste stem, de productomschrijving nog niet.</p>
+    </div>
+    <div class="twee">
+      <div class="vak">
+        <h3>Vier pijlers</h3>
+        <ul>
+          <li><b>Rustig:</b> geen druk en geen uitroeptekens.</li>
+          <li><b>Eerlijk:</b> we zeggen ook wanneer lenen slimmer is.</li>
+          <li><b>Concreet:</b> maten, prijzen, dagen.</li>
+          <li><b>Menselijk:</b> de gewone dag als voorbeeld.</li>
+        </ul>
+      </div>
+      <div class="vak">
+        <h3>Woorden</h3>
+        <ul>
+          <li><b>Wel:</b> hoog-laag bed, in en uit bed, op uw eigen hoogte, samen blijven slapen, gemaakt in Deventer.</li>
+          <li><b>Niet:</b> zorgbed, hulpbehoevend, senior in een kop, ergonomisch, premium, valveilig, vergoed.</li>
+        </ul>
+      </div>
+      <div class="vak">
+        <h3>Zo wordt het anders</h3>
+        <div class="paar"><p class="voor">Dit stijlvolle hoog laag bed is ideaal voor wie extra ondersteuning nodig heeft.</p><p class="na">Uw slaapkamer blijft zoals hij is. Alleen stapt u voortaan op uw eigen hoogte in en uit bed.</p></div>
+        <div class="paar"><p class="voor">Inclusief anti-Trendelenburg positie.</p><p class="na">Het hele bed kan licht kantelen, met uw hoofd hoger dan uw voeten.</p></div>
+      </div>
+      <div class="vak">
+        <h3>Knoppen</h3>
+        <ul>
+          <li>Stel uw Fermo samen</li>
+          <li>Kom kijken in Deventer</li>
+          <li>Vraag gratis advies aan huis</li>
+          <li>Bel 085 2127250</li>
+          <li>Mail mijn samenstelling</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="waarschuwing">
+  <div class="wrap">
+    <div class="sectiekop">
+      <h2>Eerst navragen bij BoxspringFD</h2>
+      <p>Zonder deze antwoorden blijven sommige beloftes te voorzichtig of kloppen ze niet.</p>
+    </div>
+    <ol>
+      <li><b>Orderdata:</b> wie koopt echt, welke maten en waar. Hiermee controleren we de scores.</li>
+      <li><b>Hoogte in cm:</b> laagste en hoogste stand staan niet op de pagina.</li>
+      <li><b>Tweepersoons:</b> gaan de helften apart of alleen samen omhoog?</li>
+      <li><b>Zorgbed:</b> is de Fermo gecertificeerd? Zo niet, dan gaat dat woord van de pagina.</li>
+      <li><b>Korting van €899:</b> voldoet de doorgestreepte adviesprijs aan de regels?</li>
+    </ol>
+  </div>
+</section>
+
+</body>
+</html>
