@@ -131,6 +131,7 @@ header.site{position:sticky;top:0;z-index:40;background:var(--wit);border-bottom
 .stap3 li::before{content:counter(s);position:absolute;left:0;top:1px;width:28px;height:28px;border-radius:50%;background:var(--nacht);color:#fff;font:700 15px/28px var(--fh);text-align:center}
 .stap3 b{display:block;font:700 17px var(--fh);color:var(--ink)}
 .klein{font-size:15.5px;color:var(--muted)}
+.daarna{margin:-4px 0 0;font:600 18px var(--fh);color:var(--ink)}
 .eenmalig{font-size:15.5px;color:var(--muted);line-height:1.4}
 .brform{display:grid;gap:6px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px}
 .brform label{font:600 16px var(--fh);color:var(--ink)}
@@ -324,7 +325,7 @@ footer p{max-width:80ch}
       <li><b>Lijkt een gewone boxspring</b>Geen zorgbed in uw slaapkamer</li>
       <li><b>Helpt u overeind</b>Omhoog, kantelen en rechtop</li>
       <li><b>Samen blijven slapen</b>Tot 200 cm, ieder een eigen matras</li>
-      <li><b>Gemaakt in Deventer</b>15 jaar garantie op frame en bodem</li>
+      <li><b>Hoge kwaliteit, veiliger uit bed</b>15 jaar garantie op frame en bodem</li>
     </ul>
 
     <div class="step"><span>Voor wie is het bed?</span>
@@ -341,6 +342,7 @@ footer p{max-width:80ch}
 
     <div class="pricebox">
       <div class="prices"><strong>Gratis</strong><span class="vanaf">tot 26 weken</span></div>
+      <p class="daarna">Daarna <b id="pDan"></b> per maand huur</p>
       <p class="eenmalig">Met een medische indicatie, via uw zorgverzekering.</p>
       <button class="btn" type="button" data-open>Gratis lenen</button>
       <a class="tekstlink" href="tel:0852127250">Liever bellen? 085 2127250</a>
@@ -587,6 +589,7 @@ function render(){
   document.querySelectorAll('[data-who]').forEach(b => b.setAttribute('aria-pressed', b.dataset.who === S.who));
   document.getElementById('swatches').innerHTML = KLEUR.map(k => `<button type="button" class="sw" style="background:${k[2]}" aria-label="${k[1]}" aria-pressed="${k[0] === S.k}" data-k="${k[0]}"></button>`).join('');
   document.getElementById('kleurNaam').textContent = KLEUR.find(k => k[0] === S.k)[1];
+  document.getElementById('pDan').textContent = euro(HUUR[S.who].lang);
 }
 function fixLen(){ if (S.w === 180 && S.l === 220) S.l = 210; }
 function showKleur(){
